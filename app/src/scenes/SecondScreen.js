@@ -1,5 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {
+  Container,
+  Content,
+  Text,
+  Grid,
+  Row,
+  Col,
+  Body,
+  Card,
+  CardItem,
+} from 'native-base';
+
 import Axios from 'axios';
 
 var api_key = 'Gm0GowOLicT74YPJ2SDXZ8pir4Nylj5HAqo3yBty';
@@ -21,15 +33,22 @@ const SecondScreen = ({route, navigation}) => {
     apiCall();
   }, []);
   return (
-    <View style={styles.container}>
-      <Text>SecondScreen</Text>
-      <Text style={styles.title}>Name : {data.name}</Text>
-      <Text style={styles.title}>URL : {data.nasa_jpl_url}</Text>
-      <Text style={styles.title}>
-        IS Potentialy Hazardouz or Not :{' '}
-        {data.is_potentially_hazardous_asteroid ? 'Yes' : 'No'}
-      </Text>
-    </View>
+    <Container style={{flex: 1, margin: 10}}>
+      <Content>
+        <Card>
+          <CardItem>
+            <Body>
+              <Text style={styles.title}>Name : {data.name}</Text>
+              <Text style={styles.title}>URL : {data.nasa_jpl_url}</Text>
+              <Text style={styles.title}>
+                IS Potentialy Hazardouz or Not :{' '}
+                {data.is_potentially_hazardous_asteroid ? 'Yes' : 'No'}
+              </Text>
+            </Body>
+          </CardItem>
+        </Card>
+      </Content>
+    </Container>
   );
 };
 
@@ -44,5 +63,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: 'bold',
+    paddingVertical: 10,
+    textAlign: 'center',
   },
 });
