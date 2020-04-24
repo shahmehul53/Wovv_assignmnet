@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import Axios from 'axios';
 
-var api_key = 'GHK7riureaOrtm6hBOhqtDoU8vnnXmb7sKXTcq44';
+var api_key = 'Gm0GowOLicT74YPJ2SDXZ8pir4Nylj5HAqo3yBty';
 
 const SecondScreen = ({route, navigation}) => {
   const {id} = route.params;
@@ -13,7 +13,7 @@ const SecondScreen = ({route, navigation}) => {
     Axios.get(
       `https://api.nasa.gov/neo/rest/v1/neo/${id}?api_key=${api_key}`,
     ).then(res => {
-      console.log('REsult', res.data.near_earth_objects), setData(res.data);
+      console.log('REsult', res.data), setData(res.data);
     });
   };
 

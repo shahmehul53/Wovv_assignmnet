@@ -8,30 +8,32 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-var api_key = 'GHK7riureaOrtm6hBOhqtDoU8vnnXmb7sKXTcq44';
+var api_key = 'Gm0GowOLicT74YPJ2SDXZ8pir4Nylj5HAqo3yBty';
 
 const FirstScreen = ({route, navigation}) => {
-  const [data, setData] = useState({id: ''});
-  //const [result, setresult] = useState([]);
+  const [data1, setData1] = useState({id: ''});
+  const [datasource, setDatasource] = useState([]);
   let arrData = [];
+  let randomItem = [];
 
   const apiCall = () => {
     Axios.get(
-      `https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=GHK7riureaOrtm6hBOhqtDoU8vnnXmb7sKXTcq44`,
+      `https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${api_key}`,
     ).then(res => {
       console.log('REsult', res.data.near_earth_objects);
       var resultarray = res.data.near_earth_objects;
-      for (let i = 0; i < resultarray.length - 1; i++) {
-        arrData.push(resultarray[i]);
+
+      for (let i = 0; i < resultarray[i].id.length - 1; i++) {
+        arrData.push(resultarray[i].id);
       }
+      console.log('arrData', arrData);
+      randomItem = arrData[Math.floor(Math.random() * arrData.length)];
+      console.log('randomItem', randomItem);
     });
   };
 
-  var randomItem = arrData[Math.floor(Math.random() * arrData.length)];
-
   useEffect(() => {
     apiCall();
-    console.log('arra', randomItem);
   }, []);
   return (
     <View style={styles.container}>
@@ -41,12 +43,12 @@ const FirstScreen = ({route, navigation}) => {
         placeholder="Enter Asteroid' ID"
         autoCapitalize="none"
         autoCorrect={false}
-        onChangeText={id => setData(id)}
+        onChangeText={id => setData1(id)}
         // value={id}
       />
 
       <TouchableOpacity
-        onPress={() => navigation.navigate('Second', {id: data})}
+        onPress={() => navigation.navigate('Second', {id: data1})}
         style={styles.buttonStyle}>
         <Text
           style={{
