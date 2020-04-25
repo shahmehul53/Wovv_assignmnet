@@ -38,10 +38,12 @@ const SecondScreen = ({route, navigation}) => {
         <Card>
           <CardItem>
             <Body>
-              <Text style={styles.title}>Name : {data.name}</Text>
-              <Text style={styles.title}>URL : {data.nasa_jpl_url}</Text>
+              <Text style={styles.title}>name : {data.name}</Text>
               <Text style={styles.title}>
-                IS Potentialy Hazardouz or Not :{' '}
+                nasa_jpl_url : {data.nasa_jpl_url}
+              </Text>
+              <Text style={styles.title}>
+                is_potentially_hazardous_asteroid :{' '}
                 {data.is_potentially_hazardous_asteroid ? 'Yes' : 'No'}
               </Text>
             </Body>
